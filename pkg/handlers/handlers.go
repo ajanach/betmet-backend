@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/ajanach/go-web/pkg/config"
+	"github.com/ajanach/go-web/pkg/models"
 	"github.com/ajanach/go-web/pkg/render"
 	"net/http"
 )
@@ -16,9 +17,8 @@ var Repo *Repository
 
 // NewRepo creates a new repository
 func NewRepo(a *config.AppConfig) *Repository {
-	return &Repository{
-		App: a,
-	}
+	repo := Repository{App: a}
+	return &repo
 }
 
 // NewHandlers sets the repository for the handlers
@@ -27,9 +27,13 @@ func NewHandlers(r *Repository) {
 }
 
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "home.page.tmpl")
+	logic := make(map[string]string)
+	logic["test"] = "Test sending data from GO to frontend :)"
+	render.RenderTemplate(w, "home.page.tmpl", &models.TemplateData{StringMap: logic})
 }
 
 func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "about.page.tmpl")
+	logic := make(map[string]string)
+	logic["test"] = "Test sending data from GO to frontend :)"
+	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{StringMap: logic})
 }

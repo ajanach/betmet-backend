@@ -4,12 +4,11 @@ import (
 	"bytes"
 	"fmt"
 	"github.com/ajanach/go-web/pkg/config"
+	"github.com/ajanach/go-web/pkg/models"
 	"html/template"
 	"net/http"
 	"path/filepath"
 )
-
-var functions = template.FuncMap{} // I am using this when I am creating templateSet .Funcs(functions)
 
 var app *config.AppConfig
 
@@ -18,12 +17,22 @@ func NewTemplates(a *config.AppConfig) {
 	app = a
 }
 
+// AddDefaultData is taking the template data and returning it
+func AddDefaultData(templateData *models.TemplateData) *models.TemplateData {
+	return templateData
+}
+
 // RenderTemplate is executing parsed data to writer
-func RenderTemplate(w http.ResponseWriter, tmpl string) {
-	// retrieving cache map from CreateTemplateCache() function
-	cacheMap, err := CreateTemplateCache()
-	if err != nil {
-		fmt.Println("Error:", err)
+func RenderTemplate(w http.ResponseWriter, tmpl string, templateData *models.TemplateData) {
+	// cacheMap holding template cache
+	var cacheMap map[string]*template.Template
+
+	if app.UseCache {
+		// store app.TemplateCache to cacheMap from config.go
+		cacheMap = app.TemplateCache
+	} else {
+		// retrieving cache map from CreateTemplateCache() function
+		cacheMap, _ = CreateTemplateCache()
 	}
 
 	// parsedData is holding parsedData of specific key
@@ -35,11 +44,14 @@ func RenderTemplate(w http.ResponseWriter, tmpl string) {
 	// creating new bytes buffer type - used to store the result of executed data
 	buff := new(bytes.Buffer)
 
+	// templateData is storing passed argument of templateData
+	templateData = AddDefaultData(templateData)
+
 	// executing parsed data - write result to buffer
-	_ = parsedData.Execute(buff, nil)
+	_ = parsedData.Execute(buff, templateData)
 
 	// context of the buffer are written to the HTTP response writer using writeTo()
-	_, err = buff.WriteTo(w)
+	_, err := buff.WriteTo(w)
 	if err != nil {
 		fmt.Println("Error:", err)
 	}
