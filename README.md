@@ -1,14 +1,17 @@
-# Bet App
 
-The application is built using the programming language Golang and is part of a college project on programming engineering.
+**NOTE: This is only backend part of the app.**
 
-# How to use
+# Technologies
+- Golang
+- Firebase Admin
+- Gorilla
+- Gocron
 
-To use betapp, clone the repository, install golang, and run the application using the following commands:
-
-```Shell
-git clone https://github.com/ajanach/betapp/
-cd betapp
-go run .\cmd\web\ . # for Windows
-# go run ./cmt/web/*.go # for Linux
+# Build
 ```
+dep ensure
+go build .
+```
+*limitation: Project must be cloned into $GOPATH/src/bet-server*
+
+*note: JSON file with credentials is required for server to start*
