@@ -1,4 +1,4 @@
-module github.com/ajanach/bet-server
+module github.com/ajanach/betmet-backend
 
 go 1.20
 

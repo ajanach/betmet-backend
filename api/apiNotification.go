@@ -3,9 +3,9 @@ package api
 import (
 	"context"
 	"encoding/json"
-	"github.com/ajanach/bet-server/app"
-	push "github.com/ajanach/bet-server/push"
-	"github.com/ajanach/bet-server/repository"
+	"github.com/ajanach/betmet-backend/app"
+	push "github.com/ajanach/betmet-backend/push"
+	"github.com/ajanach/betmet-backend/repository"
 	"log"
 	"net/http"
 )

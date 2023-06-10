@@ -2,8 +2,8 @@ package push
 
 import (
 	"fmt"
-	"github.com/ajanach/bet-server/app"
-	"github.com/ajanach/bet-server/repository"
+	"github.com/ajanach/betmet-backend/app"
+	"github.com/ajanach/betmet-backend/repository"
 	"golang.org/x/net/context"
 )
 

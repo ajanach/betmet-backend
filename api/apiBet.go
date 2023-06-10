@@ -1,15 +1,18 @@
 package api
 
 import (
-	"context"
 	"encoding/json"
-	"github.com/ajanach/bet-server/app"
-	"github.com/ajanach/bet-server/push"
-	"github.com/ajanach/bet-server/repository"
+	"github.com/ajanach/betmet-backend/push"
+	"github.com/ajanach/betmet-backend/repository"
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 	"time"
+)
+
+import (
+	"context"
+	"github.com/ajanach/betmet-backend/app"
 )
 
 func CreateBet(w http.ResponseWriter, r *http.Request) {

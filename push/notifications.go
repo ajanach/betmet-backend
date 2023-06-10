@@ -2,8 +2,8 @@ package push
 
 import (
 	"fmt"
-	"github.com/ajanach/bet-server/country"
-	"github.com/ajanach/bet-server/repository"
+	"github.com/ajanach/betmet-backend/country"
+	"github.com/ajanach/betmet-backend/repository"
 	"log"
 )
 

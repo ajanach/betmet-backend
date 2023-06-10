@@ -3,9 +3,9 @@ package main
 import (
 	"context"
 	firebase "firebase.google.com/go"
-	"github.com/ajanach/bet-server/api"
-	"github.com/ajanach/bet-server/app"
-	"github.com/ajanach/bet-server/gol24"
+	"github.com/ajanach/betmet-backend/api"
+	"github.com/ajanach/betmet-backend/app"
+	"github.com/ajanach/betmet-backend/gol24"
 	"github.com/gorilla/handlers"
 	"github.com/jasonlvhit/gocron"
 	"google.golang.org/api/option"
@@ -15,12 +15,12 @@ import (
 )
 
 const (
-	ADDR = "10.20.233.121:8080"
+	ADDR = "192.168.0.14:8080"
 )
 
 func main() {
 	ctx := context.Background()
-	opt := option.WithCredentialsFile("betmet-523bd-firebase-adminsdk-w8cv0-c7213299f2.json")
+	opt := option.WithCredentialsFile("betmet-523bd-firebase-adminsdk-w8cv0-93ada3fabe.json")
 	firebaseApp, err := firebase.NewApp(ctx, nil, opt)
 	if err != nil {
 		panic(err)
@@ -39,7 +39,7 @@ func main() {
 	}
 	log.Printf("Connected to FCM")
 
-	log.Printf("Running Gol24 client in background")
+	log.Printf("Running Betmet client in background")
 	gocron.Every(1).Minute().Do(gol24.DownloadDataAndUploadToFirebase)
 	gocron.Start()
 

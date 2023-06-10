@@ -3,7 +3,7 @@ package push
 import (
 	"firebase.google.com/go/messaging"
 	"fmt"
-	"github.com/ajanach/bet-server/app"
+	"github.com/ajanach/betmet-backend/app"
 	"golang.org/x/net/context"
 	"log"
 )

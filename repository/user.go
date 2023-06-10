@@ -2,7 +2,7 @@ package repository
 
 import (
 	"fmt"
-	"github.com/ajanach/bet-server/app"
+	"github.com/ajanach/betmet-backend/app"
 	"golang.org/x/net/context"
 )
 
