@@ -12,16 +12,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ajanach/bet-server/app"
-	"github.com/ajanach/bet-server/country"
-	"github.com/ajanach/bet-server/push"
-	"github.com/ajanach/bet-server/repository"
+	"github.com/ajanach/betmet-backend/app"
+	"github.com/ajanach/betmet-backend/country"
+	"github.com/ajanach/betmet-backend/push"
+	"github.com/ajanach/betmet-backend/repository"
 )
 
 const (
-	// MS 2018
-	APIURL = "http://www.gol24.pl/ajax/serwis_specjalny/serwisy_sportowe/wyniki_meczow/?strona=1&region=wszystkie&liczba=1000&data_od=2018-6-14+0%3A0%3A0&data_do=2018-7-15+23%3A59%3A59&order=phase-day&druzyna=&id_dyscypliny=&id_lig=280&na_zywo="
-	// APIURL = "http://www.gol24.pl/ajax/serwis_specjalny/serwisy_sportowe/wyniki_meczow/?id=1&typ=dyscyplina&na_zywo=1&strona=1&liczba=7&region=&id_lig%5B%5D=5&id_lig%5B%5D=1&id_lig%5B%5D=3&id_lig%5B%5D=59&id_lig%5B%5D=63&id_lig%5B%5D=65&id_lig%5B%5D=121&id_lig%5B%5D=41&id_lig%5B%5D=49&id_lig%5B%5D=43&id_lig%5B%5D=55&id_lig%5B%5D=51&id_lig%5B%5D=53"
+	// APIURL = "http://www.gol24.pl/ajax/serwis_specjalny/serwisy_sportowe/wyniki_meczow/?strona=1&region=wszystkie&liczba=1000&data_od=2018-6-14+0%3A0%3A0&data_do=2018-7-15+23%3A59%3A59&order=phase-day&druzyna=&id_dyscypliny=&id_lig=280&na_zywo="
+	APIURL = "http://www.gol24.pl/ajax/serwis_specjalny/serwisy_sportowe/wyniki_meczow/?id=1&typ=dyscyplina&na_zywo=1&strona=1&liczba=7&region=&id_lig%5B%5D=5&id_lig%5B%5D=1&id_lig%5B%5D=3&id_lig%5B%5D=59&id_lig%5B%5D=63&id_lig%5B%5D=65&id_lig%5B%5D=121&id_lig%5B%5D=41&id_lig%5B%5D=49&id_lig%5B%5D=43&id_lig%5B%5D=55&id_lig%5B%5D=51&id_lig%5B%5D=53"
 	// APIURL = "https://gol24.pl/ajax/serwis_specjalny/serwisy_sportowe/wyniki_meczow/?strona=1&region=wszystkie&liczba=1000&data_od=2023-5-1+0%3A0%3A0&data_do=2023-6-1+23%3A59%3A59&order=phase-day&druzyna=&id_dyscypliny=&id_lig=1&na_zywo=http://www.gol24.pl/ajax/serwis_specjalny/serwisy_sportowe/wyniki_meczow/?strona=1&region=wszystkie&liczba=1000&data_od=2018-6-14+0%3A0%3A0&data_do=2018-7-15+23%3A59%3A59&order=phase-day&druzyna=&id_dyscypliny=&id_lig=280&na_zywo="
 )
 
